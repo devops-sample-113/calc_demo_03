@@ -1,6 +1,7 @@
 import flet as ft
 from calculate import Calculator
 from buttons import DigitButton, OperatorButton, ActionButton
+import math
 
 
 class CalculatorApp(ft.Container):
@@ -48,6 +49,33 @@ class CalculatorApp(ft.Container):
 
                         OperatorButton(
                             text="÷",
+                            button_clicked=self.button_clicked,
+                            operations="div",
+                        ),
+                    ]
+                ),
+                ft.Row(
+                    expand=True,
+                    controls=[
+
+                        ActionButton(
+                            text="!",
+                            button_clicked=self.button_clicked,
+                            action="factorial",
+                        ),
+                        ActionButton(
+                            text="√",
+                            button_clicked=self.button_clicked,
+                            action="square root",
+                        ),
+                        ActionButton(
+                            text=" ",
+                            button_clicked=self.button_clicked,
+                            action="percent",
+                        ),
+
+                        OperatorButton(
+                            text=" ",
                             button_clicked=self.button_clicked,
                             operations="div",
                         ),
@@ -156,6 +184,18 @@ class CalculatorApp(ft.Container):
             self.result.value = str(
                 self.format_number(
                     -1*float(self.result.value)
+                )
+            )
+        elif action == "factorial":
+            self.result.value = str(
+                self.format_number(
+                    math.factorial(int(self.result.value))
+                )
+            )
+        elif action == "square root":
+            self.result.value = str(
+                self.format_number(
+                    math.sqrt(float(self.result.value))
                 )
             )
         elif action == "percent":
