@@ -53,38 +53,16 @@ class CalculatorApp(ft.Container):
                             operations="div",
                         ),
                         
-                    ]
-                ),
-                ft.Row(
-                    expand=True,
-                    controls=[
-
                         ActionButton(
-                            text="!",
+                            text="ln",
                             button_clicked=self.button_clicked,
-                            action="factorial",
+                            action="ln",
                         ),
+                        
                         ActionButton(
-                            text="√",
+                            text="abs",
                             button_clicked=self.button_clicked,
-                            action="square root",
-                        ),
-                        DigitButton(
-                            text="π", button_clicked=self.button_clicked, value=3.14),
-                        ActionButton(
-                            text="log",
-                            button_clicked=self.button_clicked,
-                            action="log",
-                        ),
-                         ActionButton(
-                            text="ceil",
-                            button_clicked=self.button_clicked,
-                            action="ceil",
-                        ),
-                         ActionButton(
-                            text="floor",
-                            button_clicked=self.button_clicked,
-                            action="floor",
+                            action="abs",
                         ),
                     ]
                 ),
@@ -193,18 +171,6 @@ class CalculatorApp(ft.Container):
                     -1*float(self.result.value)
                 )
             )
-        elif action == "factorial":
-            self.result.value = str(
-                self.format_number(
-                    math.factorial(int(self.result.value))
-                )
-            )
-        elif action == "square root":
-            self.result.value = str(
-                self.format_number(
-                    math.sqrt(float(self.result.value))
-                )
-            )
         elif action == "percent":
             self.result.value = str(
                 self.format_number(
@@ -219,28 +185,18 @@ class CalculatorApp(ft.Container):
                 )
             )
             self.reset()
-        elif action == "log":
+        elif action == "ln":
             self.result.value = str(
                 self.format_number(
-                    math.log10(float(self.result.value))
+                    math.log(float(self.result.value))
                 )
             )
-            self.reset()
-        elif action == "ceil":
+        elif action == "abs":
             self.result.value = str(
                 self.format_number(
-                    math.ceil(float(self.result.value))
+                    abs(float(self.result.value))
                 )
             )
-            self.reset()
-
-        elif action == "floor":
-            self.result.value = str(
-                self.format_number(
-                    math.floor(float(self.result.value))
-                )
-            )
-            self.reset()
         else:
             raise ValueError("Invalid action")
 
