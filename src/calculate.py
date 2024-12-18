@@ -1,3 +1,4 @@
+import math
 class Calculator:
     def __init__(self):
         self.operations = {
@@ -5,6 +6,8 @@ class Calculator:
             "sub": self.subtract,
             "mul": self.multiply,
             "div": self.divide,
+            "sqrt": self.sqrt,
+            "gcd": self.gcd,
         }
 
     def calculate(self, operand1, operand2, operator):
@@ -35,6 +38,19 @@ class Calculator:
             raise ValueError("Error: Can not divide by zero!")
 
         return x / y
+    def divide(self, x, y):
+        if y == 0:
+            raise ValueError("Error: Can not divide by zero!")
+
+        return x / y
+    
+    def sqrt(self, x):
+
+        return math.sqrt(x)
+    
+    def gcd(self, x, y):
+        return math.gcd(x,y)
+    
 
 
 

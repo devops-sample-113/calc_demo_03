@@ -52,6 +52,16 @@ class CalculatorApp(ft.Container):
                             button_clicked=self.button_clicked,
                             operations="div",
                         ),
+                        OperatorButton(
+                            text="sqrt",
+                            button_clicked=self.button_clicked,
+                            operations="sqrt",
+                        ),
+                        OperatorButton(
+                            text="gcd",
+                            button_clicked=self.button_clicked,
+                            operations="gcd",
+                        ),
                     ]
                 ),
                 ft.Row(
