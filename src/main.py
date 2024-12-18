@@ -253,6 +253,18 @@ class CalculatorApp(ft.Container):
                 )
             )
             self.reset()
+        elif action == "ln":
+            self.result.value = str(
+                self.format_number(
+                    math.log(float(self.result.value))
+                )
+            )
+        elif action == "abs":
+            self.result.value = str(
+                self.format_number(
+                    abs(float(self.result.value))
+                )
+            )
         else:
             raise ValueError("Invalid action")
 
