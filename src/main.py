@@ -58,6 +58,40 @@ class CalculatorApp(ft.Container):
                     expand=True,
                     controls=[
 
+                        ActionButton(
+                            text="!",
+                            button_clicked=self.button_clicked,
+                            action="factorial",
+                        ),
+                        ActionButton(
+                            text="√",
+                            button_clicked=self.button_clicked,
+                            action="square root",
+                        ),
+                        ActionButton(
+                            text=" ",
+                            button_clicked=self.button_clicked,
+                            action="percent",
+                        ),
+
+                        OperatorButton(
+                            text=" ",
+                            button_clicked=self.button_clicked,
+                            operations="div",
+                        ),
+                    ]
+                ),
+                ft.Row(
+                    expand=True,
+                    controls=[
+
+                        DigitButton(
+                            text="π", button_clicked=self.button_clicked, value=3.14),
+                        ActionButton(
+                            text="log",
+                            button_clicked=self.button_clicked,
+                            action="log",
+                        ),
                         DigitButton(
                             text="π", button_clicked=self.button_clicked, value=3.14),
                         ActionButton(
@@ -170,6 +204,18 @@ class CalculatorApp(ft.Container):
             self.result.value = str(
                 self.format_number(
                     -1*float(self.result.value)
+                )
+            )
+        elif action == "factorial":
+            self.result.value = str(
+                self.format_number(
+                    math.factorial(int(self.result.value))
+                )
+            )
+        elif action == "square root":
+            self.result.value = str(
+                self.format_number(
+                    math.sqrt(float(self.result.value))
                 )
             )
         elif action == "percent":
