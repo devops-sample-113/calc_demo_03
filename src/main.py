@@ -52,16 +52,7 @@ class CalculatorApp(ft.Container):
                             button_clicked=self.button_clicked,
                             operations="div",
                         ),
-                        OperatorButton(
-                            text="sqrt",
-                            button_clicked=self.button_clicked,
-                            operations="sqrt",
-                        ),
-                        OperatorButton(
-                            text="gcd",
-                            button_clicked=self.button_clicked,
-                            operations="gcd",
-                        ),
+                        
                     ]
                 ),
                 ft.Row(
@@ -84,6 +75,16 @@ class CalculatorApp(ft.Container):
                             text="log",
                             button_clicked=self.button_clicked,
                             action="log",
+                        ),
+                         ActionButton(
+                            text="ceil",
+                            button_clicked=self.button_clicked,
+                            action="ceil",
+                        ),
+                         ActionButton(
+                            text="floor",
+                            button_clicked=self.button_clicked,
+                            action="floor",
                         ),
                     ]
                 ),
@@ -222,6 +223,21 @@ class CalculatorApp(ft.Container):
             self.result.value = str(
                 self.format_number(
                     math.log10(float(self.result.value))
+                )
+            )
+            self.reset()
+        elif action == "ceil":
+            self.result.value = str(
+                self.format_number(
+                    math.ceil(float(self.result.value))
+                )
+            )
+            self.reset()
+
+        elif action == "floor":
+            self.result.value = str(
+                self.format_number(
+                    math.floor(float(self.result.value))
                 )
             )
             self.reset()
