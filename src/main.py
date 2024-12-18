@@ -1,6 +1,7 @@
 import flet as ft
 from calculate import Calculator
 from buttons import DigitButton, OperatorButton, ActionButton
+import math
 
 
 class CalculatorApp(ft.Container):
@@ -50,6 +51,19 @@ class CalculatorApp(ft.Container):
                             text="÷",
                             button_clicked=self.button_clicked,
                             operations="div",
+                        ),
+                    ]
+                ),
+                ft.Row(
+                    expand=True,
+                    controls=[
+
+                        DigitButton(
+                            text="π", button_clicked=self.button_clicked, value=3.14),
+                        ActionButton(
+                            text="log",
+                            button_clicked=self.button_clicked,
+                            action="log",
                         ),
                     ]
                 ),
@@ -169,6 +183,13 @@ class CalculatorApp(ft.Container):
             self.result.value = self.format_number(
                 self.calculate(
                     self.operand1, float(self.result.value), self.operator
+                )
+            )
+            self.reset()
+        elif action == "log":
+            self.result.value = str(
+                self.format_number(
+                    math.log10(float(self.result.value))
                 )
             )
             self.reset()
