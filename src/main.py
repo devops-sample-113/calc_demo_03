@@ -68,30 +68,6 @@ class CalculatorApp(ft.Container):
                             button_clicked=self.button_clicked,
                             action="square root",
                         ),
-                        ActionButton(
-                            text=" ",
-                            button_clicked=self.button_clicked,
-                            action="percent",
-                        ),
-
-                        OperatorButton(
-                            text=" ",
-                            button_clicked=self.button_clicked,
-                            operations="div",
-                        ),
-                    ]
-                ),
-                ft.Row(
-                    expand=True,
-                    controls=[
-
-                        DigitButton(
-                            text="π", button_clicked=self.button_clicked, value=3.14),
-                        ActionButton(
-                            text="log",
-                            button_clicked=self.button_clicked,
-                            action="log",
-                        ),
                         DigitButton(
                             text="π", button_clicked=self.button_clicked, value=3.14),
                         ActionButton(
