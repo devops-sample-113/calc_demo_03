@@ -104,6 +104,11 @@ class CalculatorApp(ft.Container):
                 ft.Row(
                     expand=True,
                     controls=[
+                        ActionButton(
+                            text="cosx",
+                            button_clicked=self.button_clicked,
+                            action="cos",
+                        ),
                         DigitButton(
                             text="4", button_clicked=self.button_clicked, value=4),
                         DigitButton(
@@ -117,6 +122,11 @@ class CalculatorApp(ft.Container):
                 ft.Row(
                     expand=True,
                     controls=[
+                        ActionButton(
+                            text="10^x",
+                            button_clicked=self.button_clicked,
+                            action="tenpow",
+                        ),
                         DigitButton(
                             text="1", button_clicked=self.button_clicked, value=1),
                         DigitButton(
@@ -219,28 +229,20 @@ class CalculatorApp(ft.Container):
                 )
             )
             self.reset()
-        elif action == "log":
+        elif action == "tenpow":
             self.result.value = str(
                 self.format_number(
-                    math.log10(float(self.result.value))
+                    math.pow(10,float(self.result.value))
                 )
             )
             self.reset()
-        elif action == "ceil":
+        elif action == "cos":
             self.result.value = str(
                 self.format_number(
-                    math.ceil(float(self.result.value))
+                    math.cos(float(self.result.value))
                 )
             )
-            self.reset()
-
-        elif action == "floor":
-            self.result.value = str(
-                self.format_number(
-                    math.floor(float(self.result.value))
-                )
-            )
-            self.reset()
+            self.reset()    
         else:
             raise ValueError("Invalid action")
 
