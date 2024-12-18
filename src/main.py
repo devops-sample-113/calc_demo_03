@@ -1,7 +1,7 @@
 import flet as ft
 from calculate import Calculator
 from buttons import DigitButton, OperatorButton, ActionButton
-
+import math
 
 class CalculatorApp(ft.Container):
     # application's root control (i.e. "view") containing all other controls
@@ -69,6 +69,11 @@ class CalculatorApp(ft.Container):
                 ft.Row(
                     expand=True,
                     controls=[
+                        ActionButton(
+                            text="cosx",
+                            button_clicked=self.button_clicked,
+                            action="cos",
+                        ),
                         DigitButton(
                             text="4", button_clicked=self.button_clicked, value=4),
                         DigitButton(
@@ -82,6 +87,11 @@ class CalculatorApp(ft.Container):
                 ft.Row(
                     expand=True,
                     controls=[
+                        ActionButton(
+                            text="10^x",
+                            button_clicked=self.button_clicked,
+                            action="tenpow",
+                        ),
                         DigitButton(
                             text="1", button_clicked=self.button_clicked, value=1),
                         DigitButton(
@@ -172,6 +182,20 @@ class CalculatorApp(ft.Container):
                 )
             )
             self.reset()
+        elif action == "tenpow":
+            self.result.value = str(
+                self.format_number(
+                    math.pow(10,float(self.result.value))
+                )
+            )
+            self.reset()
+        elif action == "cos":
+            self.result.value = str(
+                self.format_number(
+                    math.cos(float(self.result.value))
+                )
+            )
+            self.reset()    
         else:
             raise ValueError("Invalid action")
 
